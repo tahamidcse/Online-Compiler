@@ -1,0 +1,8 @@
+16.update works set sal=sal*1.1 where salary<=19000 and ename in (select distinct mname from manages) 
+16.update works set sal=sal*1.03 where salary>19000 and ename in (select distinct mname from manages) 
+12.select company_name from works where salary = (select avg(salary) from employee natural join works group by company_name where company_name="agrani";
+11.select cname from works group by cname having sum(salary)<=all(select sum(salary) from works group by cname)
+10.select cname from works group by cname having count(ename)>all(select count(ename) from works group by cname)
+9.select ename from works group by cname having sum(salary)>all(select avg(salary) from works group by cname)
+8.select ename from works group by cname having salary>all(select salary from works where cname='janata');
+7.select ename from employee natural join works where cname in (select cname from company where city=e.city)

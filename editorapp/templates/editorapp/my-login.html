@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        /* Reset some default styles */
+        body, h1, form {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Style the body */
+        body {
+            background-color: #f7f7f7; /* Light background color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+            flex-direction: column;
+        }
+
+        /* Style the header */
+        h1 {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 20px; /* Space below the heading */
+            text-align: center;
+        }
+
+        /* Style the form container */
+        form {
+            background-color: #fff; /* White background for the form */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow around the form */
+            width: 100%;
+            max-width: 400px; /* Form width limit */
+        }
+
+        /* Style form fields */
+        form input[type="text"],
+        form input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box; /* Include padding in width calculation */
+        }
+
+        /* Style submit button */
+        form input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50; /* Green background for the button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Hover effect for the submit button */
+        form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Optional styling for form validation error messages */
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Login here</h1>
+
+    <form method="POST" autocomplete="off">
+        {% csrf_token %}
+        
+        <!-- Form fields rendered by Django -->
+        {{ loginform.as_p }}
+
+        <!-- Submit button -->
+        <input type="submit" value="Login"/>
+    </form>
+</body>
+</html>

@@ -1,0 +1,160 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://github.com/tahamidcse">
+  <meta property="og:title" content="AOC - Online Compiler">
+  <meta property="og:description" content="Author: Tahamid Hasan">
+  <meta property="og:image" content="https://csed22.com/aoc/assets/Entrance.png">
+  <meta property="og:image:width" content="1526">
+  <meta property="og:image:height" content="792">
+
+  <link rel="canonical" href="https://aoc.csed22.com/">
+  <link rel="icon" type="image/png" href="https://csed22.com/aoc/assets/favicon.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+ <title> Online Compiler</title>
+  <script src="{% static 'js/jquery.min.js' %}" type="text/javascript" charset="utf-8"></script>
+  <script src="{% static 'js/bootstrap.js' %}" type="text/javascript" charset="utf-8"></script>
+  <script src="{% static 'ace-builds/src/ace.js' %}" type="text/javascript" charset="utf-8"></script>
+  <script src="{% static 'ace-builds/src/ext-language_tools.js' %}" type="text/javascript" charset="utf-8"></script>
+<script src="{% static 'js/my_js.js' %}" type="text/javascript" charset="utf-8"></script>
+    <script src="{% static 'js/forum_plugin.js' %}" type="text/javascript" charset="utf-8"></script>
+  
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/my_style.css' %}" />
+ <style>
+       
+
+        /* Styling the logout link */
+        a {
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #007bff; /* Blue background */
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Hover effect for logout link */
+        a:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        /* Optional footer section */
+      
+    </style>
+</head>
+
+<body onload="injectPlugInCode()">
+
+  <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}" />
+
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <h1 style="color:#fff;" class="navbar-brand" href="#"> Online Compiler</h1>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+      </ul>
+    </div>
+  </nav>
+
+  <div id="ide" class="container">
+
+    <div id="topbar">
+
+      <table id="topbar_table" style="width:100%">
+        <tr>
+
+          <td>
+            <div class="lang-choose">
+              <select class="form-control" name="lang" id="lang">
+                <option value="C">C </option>
+                <option value="CPP" selected>C++</option>
+                <option value="JAVA">Java </option>
+                <option value="Python">Python </option>
+              </select>
+            </div>
+          </td>
+
+          <td>
+            <a class="" id="download" data-toggle="tooltip" data-placement="top" title="Download Code"><img
+                src="https://csed22.com/aoc/assets/download.png" width="32" height="32" alt="download_code"></a>
+          </td>
+
+          <td>
+            <div id="settings">
+              <div class="theme-choose">
+                <select class="form-control" name="theme" id="theme">
+                  <option value="Monokai" selected>Monokai</option>
+                  <option value="Twilight">Twilight</option>
+                  <option value="Light">Light</option>
+                  <option value="Solarised Light">Solarised Light</option>
+                </select>
+              </div>
+            </div>
+          </td>
+
+        </tr>
+      </table>
+    </div>
+
+    <pre id="editor"></pre>
+
+    <table style="width:100%">
+
+      <tr>
+        <td>
+          <div class="form-check row">
+            <input type="checkbox" class="form-check-input" id="CheckInput"> Show Input</input>
+          </div>
+        </td>
+
+        <td style="padding-top: 5px;">
+          <div class="row">
+            <div id="showres">
+              <div style="text-align: right;" class="run-save-panel">
+                <button class="btn btn-success" id="runcode" data-toggle="tooltip" data-placement="top"
+                  title="Run Code">Run</button>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+
+    </table>
+
+    <div class="form-group" id="inputonly">
+      <label for="exampleFormControlTextarea1">Input</label>
+      <textarea class="form-control" id="inputarea" name="inputArea" rows="3"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Output</label>
+      <textarea disabled class="form-control" id="output" name="outputArea" rows="5"></textarea>
+    </div>
+
+</div>
+ 
+
+ <a href="{% url 'user-logout' %}">Logout here</a>
+   
+
+    <!-- Optional footer -->
+    <footer>
+        &copy; 2024 Your Website. All rights reserved.
+    </footer>
+
+</body>
+
+</html>

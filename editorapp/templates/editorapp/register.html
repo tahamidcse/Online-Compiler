@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        /* Reset default styles */
+        body, h1, form {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Body styling */
+        body {
+            background-color: #f0f0f0; /* Light background color for the page */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+            flex-direction: column;
+        }
+
+        /* Heading styling */
+        h1 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 20px; /* Space below heading */
+            text-align: center;
+        }
+
+        /* Form container styling */
+        form {
+            background-color: #fff; /* White background for the form */
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for form */
+            width: 100%;
+            max-width: 450px; /* Limit the width */
+        }
+
+        /* Style form fields (text, password, etc.) */
+        form input[type="text"],
+        form input[type="password"],
+        form input[type="email"] {
+            width: 100%;
+            padding: 12px;
+            margin: 12px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+
+        /* Submit button styling */
+        form input[type="submit"] {
+            width: 100%;
+            padding: 14px;
+            background-color: #28a745; /* Green background */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Hover effect for submit button */
+        form input[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        /* Optional error message styling */
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Register now!</h1>
+
+    <form method="POST" autocomplete="off">
+        {% csrf_token %}
+        
+        <!-- Form fields rendered by Django -->
+        {{ registerform.as_p }}
+
+        <!-- Submit button -->
+        <input type="submit" value="Register"/>
+    </form>
+</body>
+</html>
